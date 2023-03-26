@@ -1,0 +1,28 @@
+.add-form {
+    border: 1px solid;
+    margin: 3em 28em;
+    padding: 2em;
+    width: 40em;
+    height: 33em;
+}
+
+.label {
+    width: 5em;
+}
+
+.input {
+    width: 20em
+}
+
+.text {
+    width: 20em;
+}
+
+.submit {
+    text-align: right;
+    margin-right: 5em;
+}
+
+tr {
+    height: 5em;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href = "css/header.css">
+    <link rel="stylesheet" href = "css/navBar.css">
+    <link rel="stylesheet" href = "css/sideBar.css">
+    <link rel="stylesheet" href = "css/userTable.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <script src="js/sideBarEffect.js"></script>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
+    <div class = "header">
+        <a href = "#default" class ="logo"> Company</a>
+        <div onclick="loginOnClick()">
+            <i id = "login" class="material-icons">input</i>
+        </div>
+    </div>
+    <div class="topnav">
+        <a class="openbtn" onclick="openNav()">&#9776; Danh mục</a>
+        <a class="active" href="../bookManager/bookList.html">Home</a>
+        <a href="userList.html">Users</a>
+        <form id = "searchForm">
+            <input type = "text" placeholder="Search..."/>
+            <button id ="searchButton" type="submit" title="search">Go</button>
+        </form>
+    </div>
+
+    <div>
+        <div class = "add-user"> 
+            <button class = "add-user-btn" onclick="addUser()">Add User</button>
+        </div>
+        <table id="user-table">
+            <tr class ="user">
+                <th class="id">ID</th>
+                <th class="username">USERNAME</th>
+                <th class="fullname">FULLNAME</th>
+                <th class="email">EMAIL</th>
+                <th class="avatar">IMAGE</th>
+            </tr>
+        </table>
+    </div>
+    <dialog open="false" id="deleteDialog">
+        <h3>Do you want to delete this user ?</h3>
+        <button onclick="deleteUser()">Delete</button>
+        <button onclick="cancelDel()">Cancel</button>
+    </dialog>
+    <dialog open = "false" id="viewDialog">
+        <table>
+            <tr>
+                <td><img id = "view-cover"/></td>
+                <td><table id = "view-table">
+                    <tr>
+                        <td><b>username</b></td>
+                        <td id = "view-username"></td>
+                    </tr>
+                    <tr>
+                        <td><b>fullname</b></td>
+                        <td id = "view-fullname"></td>
+                    </tr>
+                    <tr>
+                        <td><b>email</b></td>
+                        <td id = "view-email"></td>
+                    </tr>
+                    <tr>
+                        <td><b>avatar</b></td>
+                        <td id = "view-avatar"></td>
+                    </tr>
+                </table></td>
+        </tr>
+        </table>  
+        <div class = "view-close">
+            <button onclick="viewDel()">Close</button>
+        </div>    
+    </dialog>
+    <dialog open = "false" id="updateDialog">
+        <table>
+            <tr>
+                <td><img id = "update-cover"/></td>
+                <td><table id = "update-table">
+                    <tr>
+                        <td><b>username</b></td>
+                        <td><input  id = "update-username" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><b>fullname</b></td>
+                        <td><input  id = "update-fullname" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><b>email</b></td>
+                        <td><input  id = "update-email" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><b>avatar</b></td>
+                        <td><input  id = "update-avatar" type="text"></td>
+                    </tr>
+                </table></td>
+        </tr>
+        </table>  
+        <div class = "update-close">
+            <button onclick="updateDel()">cancel</button> 
+        </div>    
+    </dialog>
+    <script type="text/javascript" src = "js/getUsers.js"></script>
+</body>
+</html>

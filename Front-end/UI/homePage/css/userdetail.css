@@ -1,0 +1,32 @@
+.user-table {
+    margin: 5em 0em 0em 25em;
+    width: 40em;
+    height: 25em;
+    border: 1px solid;
+    text-underline-offset: auto;
+}
+.avatar {
+    width: 5em;
+    border: 1px solid;
+
+}
+.user-desc {
+    margin-left: 1em ;
+    margin-bottom: -1em;
+
+}
+.user-row {
+    height: 3em;
+}
+
+.update-btn{
+    text-align: right;
+    margin-right: 25em;
+    margin-top: 2em;
+}
+.cc {
+    margin-bottom: 10em;
+}
+#user_avatar {
+    width: 15em;
+}

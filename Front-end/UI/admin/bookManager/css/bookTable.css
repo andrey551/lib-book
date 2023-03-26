@@ -1,0 +1,90 @@
+#book-table {
+    margin: 5em 10em;
+    border: 1px solid;
+    width: 80em
+}
+th {
+    border: 1px solid black;
+}
+
+td {
+    overflow: hidden;
+    margin: 5px;
+    border: 1px solid black;
+    text-align: left;
+    height: 3em;
+}
+
+.id {
+    width: 3em;
+    border: 1px solid black;
+}
+
+.title {
+    width: 5em;
+    border: 1px solid black;
+}
+
+.author {
+    width: 4em;
+    border: 1px solid black;
+}
+
+.price {
+    width: 3em;
+    border: 1px solid black;
+}
+
+.description {
+    width: 10em;
+    border: 1px solid black;
+}
+
+.image {
+    width: 5em;
+    border: 1px solid black;
+}
+
+tr {
+    text-align: center
+}
+
+#viewDialog {
+    width: 80em;
+    height: 30em;
+}
+
+#view-cover {
+    width: 15em;
+    height: 27em;
+}
+
+#view-table {
+    margin-left: 2em;
+}
+.view-close {
+    text-align: right;
+}
+
+#updateDialog {
+    width: 40em;
+    height: 30em;
+}
+
+#update-cover {
+    width: 15em;
+    height: 27em;
+}
+
+#update-table {
+    margin-left: 2em;
+}
+
+.add-book {
+    text-align: right;
+}
+
+.add-book-btn {
+    margin-right: 5em;
+    margin-top: 2em;
+}

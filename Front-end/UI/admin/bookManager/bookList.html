@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href = "css/header.css">
+    <link rel="stylesheet" href = "css/navBar.css">
+    <link rel="stylesheet" href = "css/sideBar.css">
+    <link rel="stylesheet" href = "css/bookTable.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <script src="js/sideBarEffect.js"></script>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
+    <div class = "header">
+        <a href = "#default" class ="logo"> Company</a>
+        <div onclick="loginOnClick()">
+            <i id = "login" class="material-icons">input</i>
+        </div>
+    </div>
+    <div class="topnav">
+        <a class="openbtn" onclick="openNav()">&#9776; Danh mục</a>
+        <a class="active" href="bookList.html">Home</a>
+        <a href="../userManager/userList.html">Users</a>
+        <form id = "searchForm">
+            <input type = "text" placeholder="Search..."/>
+            <button id ="searchButton" type="submit" title="search">Go</button>
+        </form>
+    </div>
+
+    <div>
+        <div class = "add-book"> 
+            <button class = "add-book-btn" onclick="addBook()">Add Book</button>
+        </div>
+        <table id="book-table">
+            <tr class ="book">
+                <th class="id">ID</th>
+                <th class="title">TITLE</th>
+                <th class="author">AUTHOR</th>
+                <th class="price">PRICE</th>
+                <th class="description">DESCRIPTION</th>
+                <th class="image">IMAGE</th>
+                <th class="update"></th>
+                <th class="delete"></th>
+            </tr>
+        </table>
+    </div>
+    <dialog open="false" id="deleteDialog">
+        <h3>Do you want to delete this book ?</h3>
+        <button onclick="deleteBook()">Delete</button>
+        <button onclick="cancelDel()">Cancel</button>
+    </dialog>
+    <dialog open = "false" id="viewDialog">
+        <table>
+            <tr>
+                <td><img id = "view-cover"/></td>
+                <td><table id = "view-table">
+                    <tr>
+                        <td><b>title</b></td>
+                        <td id = "view-title"></td>
+                    </tr>
+                    <tr>
+                        <td><b>author</b></td>
+                        <td id = "view-author"></td>
+                    </tr>
+                    <tr>
+                        <td><b>price</b></td>
+                        <td id = "view-price"></td>
+                    </tr>
+                    <tr>
+                        <td><b>description</b></td>
+                        <td id = "view-desc"></td>
+                    </tr>
+                    <tr>
+                        <td><b>image</b></td>
+                        <td id = "view-image"></td>
+                    </tr>
+                </table></td>
+        </tr>
+        </table>  
+        <div class = "view-close">
+            <button onclick="viewDel()">Close</button>
+        </div>    
+    </dialog>
+    <dialog open = "false" id="updateDialog">
+        <table>
+            <tr>
+                <td><img id = "update-cover"/></td>
+                <td><table id = "update-table">
+                    <tr>
+                        <td><b>title</b></td>
+                        <td><input  id = "update-title" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><b>author</b></td>
+                        <td><input  id = "update-author" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><b>price</b></td>
+                        <td><input  id = "update-price" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><b>description</b></td>
+                        <td><input  id = "update-desc" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><b>image</b></td>
+                        <td><input  id = "update-image" type="text"></td>
+                    </tr>
+                </table></td>
+        </tr>
+        </table>  
+        <div class = "update-close">
+            <button onclick="updateDel()">cancel</button> 
+        </div>    
+    </dialog>
+    <script type="text/javascript" src = "js/getBooks.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+.book-detail {
+    border: 2px black solid;
+    width: 50em;
+    height: 30em;
+    margin: 5em 20em;
+}
+
+.book-row {
+    padding: 10px
+}
+.img-part {
+    width: 20em;
+    height: 30em;
+}
+.des-part{
+    margin-top: 3em;
+    position:absolute;
+    width: 30em;
+}
+
+
+.des-row {
+    height: 3em;
+    border-bottom: 1px solid black;
+}
+.comment-part {
+    margin: 5em 20em;
+}
+
+#my-comment {
+    width: 35em;
+    height: 5em;
+}
+.send-btn {
+    margin-top: 2em;
+    text-align: right;
+    margin-right: 20em;
+}

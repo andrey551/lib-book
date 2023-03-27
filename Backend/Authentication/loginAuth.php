@@ -39,8 +39,7 @@ if($num > 0) {
     $data = array(
         "id" => $id,
         "username" => $username,
-        "password"=> $password,
-        "email" => $email
+        "password"=> $password
     );
     if(password_verify($password, $password2)) {
         $jwt = $jwtSlave->toJWT($data);

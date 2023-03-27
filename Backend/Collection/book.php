@@ -19,7 +19,7 @@ use Firebase\JWT\JWT;
     switch($REQUEST_METHOD) {
         case "POST":
             if(!$role->isAdmin($token)) {
-                http_response_code(400);
+                http_response_code(401);
                 die;
             }
             $data = json_decode(file_get_contents("php://input"));
@@ -38,8 +38,8 @@ use Firebase\JWT\JWT;
             break;
         case "GET":
             if(!$role->isUser($token) && !$role->isAdmin($token)) {
-                http_response_code(400);
-                echo json_encode(array("message" => "Cannot add your comment!"));
+                http_response_code(401);
+                echo json_encode(array("message" => "Cannot verify your account!"));
                 die;
             }
             if(isset($_GET['name']))  $data = $_GET['name'];
@@ -69,7 +69,7 @@ use Firebase\JWT\JWT;
             break;
         case "PUT":
             if(!$role->isAdmin($token)) {
-                http_response_code(400);
+                http_response_code(401);
                 die;
             }
             $data = json_decode(file_get_contents("php://input"));
@@ -91,7 +91,7 @@ use Firebase\JWT\JWT;
             break;
         case "DELETE":
             if(!$role->isAdmin($token)) {
-                http_response_code(400);
+                http_response_code(401);
                 die;
             }
             $data = $_GET['id'];

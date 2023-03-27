@@ -19,7 +19,7 @@ require "../Role/role.php";
     switch($REQUEST_METHOD) {
         case "POST":
             if(!$role->isAdmin($token)) {
-                http_response_code(400);
+                http_response_code(401);
                 die;
             }
             $data = json_decode(file_get_contents("php://input"));
@@ -38,7 +38,7 @@ require "../Role/role.php";
             break;
         case "GET":
             if(!$role->isUser($token) && !$role->isAdmin($token)) {
-                http_response_code(400);
+                http_response_code(401);
                 echo json_encode(array("message" => "Cannot add your comment!"));
                 die;
             }
@@ -49,7 +49,7 @@ require "../Role/role.php";
                 $query = "SELECT * FROM ".$table_name." WHERE USERNAME = '".$data."';";
             } else {
                 if(!$role->isAdmin($token)) {
-                    http_response_code(400);
+                    http_response_code(401);
                     die;
                 }
                 $query = "SELECT * FROM ".$table_name.";";
@@ -73,30 +73,50 @@ require "../Role/role.php";
             echo json_encode($res);
             break;
         case "PUT":
-            if(!$role->isAdmin($token)) {
-                http_response_code(400);
-                die;
-            }
-            $data = json_decode(file_get_contents("php://input"));
-            $query = "UPDATE ".$table_name." SET USERNAME ='".
-            $data->username."', PASSWORD = '".password_hash($data->password, PASSWORD_BCRYPT).
-            "', FULLNAME='".$data->fullname."', EMAIL = '"
-            .$data->email."', AVATAR = '".$data->avatar."' "
-            ."WHERE ID = 1";
-
-            $stmt = $conn->prepare($query);
-
-            if($stmt->execute()) {
-                http_response_code(200);
-                echo json_encode(array("message" => "User was update registered!"));
+            if($role->isAdmin($token)) {
+                $data = json_decode(file_get_contents("php://input"));
+                $query = "UPDATE ".$table_name." SET USERNAME ='".
+                $data->username."', PASSWORD = '".password_hash($data->password, PASSWORD_BCRYPT).
+                "', FULLNAME='".$data->fullname."', EMAIL = '"
+                .$data->email."', AVATAR = '".$data->avatar."' "
+                ."WHERE ID = 1";
+    
+                $stmt = $conn->prepare($query);
+    
+                if($stmt->execute()) {
+                    http_response_code(200);
+                    echo json_encode(array("message" => "User was updated information!"));
+                } else {
+                    http_response_code(400);
+                    echo json_encode(array("message" => "unable to updated information!"));
+                }
+            } else if($role->isUser($token)) {
+                $id = $role->isUser($token);
+                $data = json_decode(file_get_contents("php://input"));
+                $query = "UPDATE ".$table_name." SET USERNAME ='".
+                $data->username."', PASSWORD = '".password_hash($data->password, PASSWORD_BCRYPT).
+                "', FULLNAME='".$data->fullname."', EMAIL = '"
+                .$data->email."', AVATAR = '".$data->avatar."' "
+                ."WHERE ID = ".$id;
+    
+                $stmt = $conn->prepare($query);
+    
+                if($stmt->execute()) {
+                    http_response_code(200);
+                    echo json_encode(array("message" => "User was updated information!"));
+                } else {
+                    http_response_code(400);
+                    echo json_encode(array("message" => "unable to updated information!"));
+                }
             } else {
-                http_response_code(400);
-                echo json_encode(array("message" => "unable to update user!"));
+                http_response_code(401);
+                    echo json_encode(array("message" => "unable to updated information!"));
             }
+
             break;
         case "DELETE":
             if(!$role->isAdmin($token)) {
-                http_response_code(400);
+                http_response_code(401);
                 die;
             }
             $data = $_REQUEST['id'];
@@ -113,7 +133,7 @@ require "../Role/role.php";
             }
             break;
         default:
-            http_response_code(400);
+            http_response_code(401);
             echo "<3";
     }
 ?>

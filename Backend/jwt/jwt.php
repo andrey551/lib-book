@@ -34,9 +34,9 @@ class jwtOBJ {
                 $arr = JWT::decode($jwtStr, new Key($secret_key, 'HS256'));
                 return (array)$arr;
             } catch (ExpiredException $e) {
-                return ["expiredToken"];
+                return NULL;
             } catch (InvalidArgumentException $e) {
-                return ["invalidToken"];
+                return NULL;
             }
 
         }

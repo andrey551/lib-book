@@ -1,7 +1,8 @@
 <?php
-require "jwt.php";
+require "../Role/role.php";
 
-$jwtSlave = new jwtOBJ();
+$roleSlave = new role();
 $data = $_GET['token'];
-echo json_encode(array($jwtSlave->toArray($data)['data']));
+$res = $roleSlave->isUser($data) == NULL ? "yes" : "no";
+echo $res;
 ?>
